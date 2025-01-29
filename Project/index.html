@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Nayaka Khansa Alana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Nayaka Khansa Alana</h1>
+        <nav>
+            <ul>
+                <li><a href="#aboutme">About Me</a></li>
+                <li><a href="#skills">Skills & Certifications</a></li>
+                <li><a href="#portfolio">My Portfolio</a></li>
+                <li><a href="#contact">Contact Information</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Welcome to My Portfolio</h2>
+        <p>Showcasing my identity and skills with style</p>
+        <button onclick="learnMore()">Learn More</button>
+    </section>
+
+    <section id="aboutme" class="section">
+        <h2>About Me</h2>
+        <img src="assets/images/myphoto.jpg" alt="Nayaka Khansa Alana" style="width:150px; height:150px; border-radius:50%; margin-bottom: 20px;">
+        <p><strong>Name:</strong> Nayaka Khansa Alana</p>
+        <p>Combining backend power with frontend finesse, I build end-to-end solutions using Golang and modern web technologies.</p>
+    </section>
+
+    <section id="skills" class="section">
+        <h2>Skills & Certifications</h2>
+        <div class="skills">
+            <div class="skill-card">
+                <h3>Data Science</h3>
+                <img src="assets/images/certificate1.jpg" alt="Certificate 1">
+                <img src="assets/images/certificate2.jpg" alt="Certificate 2">
+            </div>
+            <div class="skill-card">
+                <h3>Data Engineer</h3>
+                <img src="assets/images/certificate3.jpg" alt="Certificate 3">
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <h2>My Portfolio</h2>
+        <div class="portfolio-item">
+            <img src="assets/images/project1.png" alt="Project 1">
+            <p>Project 1: Limit Hingga dan Tak Hingga</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="assets/images/project2.png" alt="Project 2">
+            <p>Project 2: Turunan, Tingkat Tinggi, dan Implisit</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="assets/images/project3.png" alt="Project 3">
+            <p>Project 3: Integral Tak Tentu dan Tentu</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="assets/images/project4.png" alt="Project 4">
+            <p>Project 4: Persamaan Diferensial</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="assets/images/project5.png" alt="Project 5">
+            <p>Project 5: Tipe Integral</p>
+        </div>
+
+        <!-- Limit Calculation Section -->
+        <div class="calc-section">
+            <h2>Limit Calculation</h2>
+            <form id="limitForm">
+                <label for="limitFuncType">Function:</label>
+                <input type="text" id="limitFuncType" name="funcType" placeholder="Enter function like x*x or sin(x)" required>
+
+                <label for="xValue">X value:</label>
+                <input type="text" id="xValue" name="x" placeholder="Enter x value" required>
+
+                <button type="button" onclick="calculateLimit()">Calculate Limit</button>
+            </form>
+            <div class="result" id="limitResult" style="display:none;">
+                <p><strong>Result:</strong> <span id="limitResultValue"></span></p>
+                <p class="error" id="limitErrorMessage"></p>
+            </div>
+        </div>
+    
+        <!-- Derivative Calculation Section -->
+        <div class="form-container">
+            <h2>Derivative Calculation</h2>
+          
+            <label for="functionDerivative">Enter function (example: x*x, sin(x)): </label>
+            <input type="text" id="functionDerivative" placeholder="Enter function like x*x or sin(x)">
+          
+            <label for="xValue">Enter x value: </label>
+            <input type="number" id="xValue" placeholder="Enter x value">
+          
+            <label for="derivativeType">Derivative Type: </label>
+            <select id="derivativeType">
+              <option value="first">First Derivative</option>
+              <option value="second">Second Derivative</option>
+            </select>
+          
+            <button onclick="calculateDerivative()">Calculate Derivative</button>
+          
+            <div class="result" id="derivativeResult"></div>
+          </div>          
+        </div>
+
+        <!-- Integral Calculation Section -->
+        <div class="calc-section">
+            <h2>Integral Calculation</h2>
+            <form id="integralForm">
+                <label for="integralFunction">Function (e.g., x*x, sin(x)):</label>
+                <input type="text" id="integralFunction" name="func" placeholder="Enter function like x*x or sin(x)" required>
+
+                <label for="lowerLimit">Lower limit (a):</label>
+                <input type="text" id="lowerLimit" name="lowerLimit" placeholder="Enter lower limit" required>
+
+                <label for="upperLimit">Upper limit (b):</label>
+                <input type="text" id="upperLimit" name="upperLimit" placeholder="Enter upper limit" required>
+
+                <label for="stepSize">Step size (h):</label>
+                <input type="text" id="stepSize" name="stepSize" placeholder="Enter step size" required>
+
+                <!-- Add text to the button -->
+                <button type="button" onclick="calculateIntegral()">Calculate Integral</button>
+            </form>
+            <div class="result" id="integralResult" style="display:none;">
+                <p><strong>Result:</strong> <span id="integralResultValue"></span></p>
+                <p class="error" id="integralErrorMessage"></p>
+            </div>
+        </div>
+
+        <!-- ODE Calculation Section -->
+        <div class="form-container">
+            <h2>ODE Calculation</h2>
+            <label for="t0">Initial Time (t0):</label>
+            <input type="number" id="t0" placeholder="Enter initial time (t0)">
+        
+            <label for="y0">Initial Value (y0):</label>
+            <input type="number" id="y0" placeholder="Enter initial value (y0)">
+        
+            <label for="tEnd">End Time (tEnd):</label>
+            <input type="number" id="tEnd" placeholder="Enter end time (tEnd)">
+        
+            <label for="h">Step Size (h):</label>
+            <input type="number" id="h" placeholder="Enter step size (h)">
+        
+            <label for="method">Method (Euler/Runge-Kutta):</label>
+            <select id="method" name="method">
+                <option value="euler">Euler</option>
+                <option value="runge-kutta">Runge-Kutta</option>
+            </select>
+
+            <label for="equation">Differential Equation:</label>
+            <input type="text" id="equation" name="equation" placeholder="Enter equation like y-t^2+1">
+
+            <button type="submit">Solve ODE</button>
+
+            <pre id="result"></pre>
+          </div>
+        </div>
+
+        <!-- Types of Integral Calculation Section -->
+        <div class="form-container">
+            <h2>Types of Integral Calculation</h2>
+        
+            <label for="integralType">Types of Integral Calculation:</label>
+            <select id="integralType" name="integralType">
+                <option value="double">Double Integral</option>
+                <option value="triple">Triple Integral</option>
+            </select>
+        
+            <label for="xMin">Enter lower limit for x:</label>
+            <input type="number" id="xMin" placeholder="Enter x min">
+        
+            <label for="xMax">Enter upper limit for x:</label>
+            <input type="number" id="xMax" placeholder="Enter x max">
+        
+            <label for="yMin">Enter lower limit for y:</label>
+            <input type="number" id="yMin" placeholder="Enter y min">
+        
+            <label for="yMax">Enter upper limit for y:</label>
+            <input type="number" id="yMax" placeholder="Enter y max">
+        
+            <div id="zLimits" style="display:none;">
+              <label for="zMin">Enter lower limit for z:</label>
+              <input type="number" id="zMin" placeholder="Enter z min">
+              <label for="zMax">Enter upper limit for z:</label>
+              <input type="number" id="zMax" placeholder="Enter z max">
+            </div>
+        
+            <label for="h">Enter step size (h):</label>
+            <input type="number" id="h" placeholder="Enter step size">
+        
+            <label for="function">Enter function (example: x*x, sin(x), x*y):</label>
+            <input type="text" id="function" placeholder="Enter function like x*x or sin(x)">
+        
+            <button onclick="calculateIntegral()">Calculate Integral</button>
+        
+            <div class="result" id="result"></div>
+          </div>
+    </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Information</h2>
+        <ul>
+            <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/nayaka-khansa-alana" target="_blank">linkedin.com/nayaka-khansa-alana</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/nayakakhansaalana" target="_blank">github.com/nayakakhansaalana</a></li>
+            <li><strong>Email:</strong> <a href="mailto:nayakakhansaalana@gmail.com">nayakakhansaalana@gmail.com</a></li>
+            <li><strong>No. WA:</strong> +62 812 9848 6620</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Nayaka Khansa Alana. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Function to calculate the limit
+        async function calculateLimit() {
+            const funcType = document.getElementById('funcType').value;
+            const inputPoint = document.getElementById('inputPoint').value;
+    
+            // Prepare the data to send
+            const requestData = {
+                funcType: funcType,
+                input: inputPoint
+            };
+    
+            try {
+                const response = await fetch('/calculate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+    
+                const data = await response.json();
+    
+                const resultDiv = document.getElementById('result');
+                const resultText = document.getElementById('limitResult');
+                const errorMessage = document.getElementById('errorMessage');
+    
+                if (data.error) {
+                    resultDiv.style.display = 'block';
+                    resultText.innerText = '';
+                    errorMessage.innerText = data.error;
+                } else {
+                    resultDiv.style.display = 'block';
+                    resultText.innerText = data.result;
+                    errorMessage.innerText = '';
+                }
+    
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while calculating the limit. Please try again.');
+            }
+        }
+    
+        // Function to calculate the derivative
+        async function calculateDerivative() {
+            const funcType = document.getElementById('derivativeFuncType').value;
+            const x = parseFloat(document.getElementById('derivativeX').value);
+            const h = parseFloat(document.getElementById('derivativeH').value);
+            const type = document.getElementById('derivativeType').value;
+            const n = type === 'higher' ? parseInt(document.getElementById('derivativeOrder').value) : 1;
+    
+            const requestData = {
+                funcType: funcType,
+                x: x,
+                h: h,
+                n: n,
+                type: type
+            };
+    
+            try {
+                const response = await fetch('/derivative', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+    
+                const data = await response.json();
+    
+                const resultDiv = document.getElementById('derivativeResult');
+                const resultText = document.getElementById('derivativeResultValue');
+                const errorMessage = document.getElementById('derivativeErrorMessage');
+    
+                if (data.error) {
+                    resultDiv.style.display = 'block';
+                    resultText.innerText = '';
+                    errorMessage.innerText = data.error;
+                } else {
+                    resultDiv.style.display = 'block';
+                    resultText.innerText = data.result;
+                    errorMessage.innerText = '';
+                }
+    
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while calculating the derivative. Please try again.');
+            }
+        }
+
+        // Function to calculate the integral
+        async function calculateIntegral() {
+            const funcType = document.getElementById('integral_type').value;
+            const func = document.getElementById('function').value;
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const h = parseFloat(document.getElementById('h').value);
+            
+            const requestData = {
+                function: func,
+                integral_type: funcType,
+                a: a,
+                b: b,
+                h: h
+            };
+
+            try {
+                const response = await fetch('https://your-api-endpoint/integral', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+
+                const data = await response.json();
+                const result = data.result;
+
+                document.getElementById('integralResult').style.display = 'block';
+                document.getElementById('integralResultValue').textContent = result;
+            } catch (error) {
+                console.error('Error calculating integral:', error);
+            }
+        }
+
+        function calculateTypesOfIntegral() {
+            // Get input values
+            const integralType = document.getElementById("integralType").value;
+            const xMin = parseFloat(document.getElementById("xMin").value);
+            const xMax = parseFloat(document.getElementById("xMax").value);
+            const yMin = parseFloat(document.getElementById("yMin").value);
+            const yMax = parseFloat(document.getElementById("yMax").value);
+            const h = parseFloat(document.getElementById("h").value);
+            const equation = document.getElementById("function").value;
+
+            // If it's a triple integral, include z limits
+            let zMin, zMax;
+            if (integralType === 'triple') {
+                zMin = parseFloat(document.getElementById("zMin").value);
+                zMax = parseFloat(document.getElementById("zMax").value);
+                document.getElementById("zLimits").style.display = 'block';
+            } else {
+                document.getElementById("zLimits").style.display = 'none';
+            }
+
+            // Prepare data for the request
+            const data = new URLSearchParams();
+            data.append("integralType", integralType);
+            data.append("xMin", xMin);
+            data.append("xMax", xMax);
+            data.append("yMin", yMin);
+            data.append("yMax", yMax);
+            data.append("h", h);
+            data.append("function", equation);
+            if (integralType === 'triple') {
+                data.append("zMin", zMin);
+                data.append("zMax", zMax);
+            }
+
+            // Send POST request to the Go server
+            fetch("/calculate", {
+                method: "POST",
+                body: data
+            })
+            .then(response => response.json())
+            .then(result => {
+                document.getElementById("result").innerText = `Result: ${result.result.toFixed(6)}`;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+            }
+
+            // Parse the function expression
+            const func = new Function('x', 'y', 'z', `
+                try {
+                return ${equation};
+                } catch (e) {
+                return 0;
+                }
+            `);
+
+            let result;
+
+            if (integralType === "double") {
+                result = integral2D(func, xMin, xMax, yMin, yMax, h);
+            } else if (integralType === "triple") {
+                result = integral3D(func, xMin, xMax, yMin, yMax, zMin, zMax, h);
+            }
+
+            document.getElementById("result").innerText = `Result: ${result.toFixed(6)}`;
+        }
+
+        function integral2D(f, xMin, xMax, yMin, yMax, h) {
+            let sum = 0;
+            for (let x = xMin; x <= xMax; x += h) {
+                for (let y = yMin; y <= yMax; y += h) {
+                    sum += f(x, y, 0); // 0 for z in 2D integral
+                }
+            }
+            return sum * h * h;
+        }
+
+        function integral3D(f, xMin, xMax, yMin, yMax, zMin, zMax, h) {
+            let sum = 0;
+            for (let x = xMin; x <= xMax; x += h) {
+                for (let y = yMin; y <= yMax; y += h) {
+                    for (let z = zMin; z <= zMax; z += h) {
+                        sum += f(x, y, z);
+                    }
+                }
+            }
+            return sum * h * h * h;
+            }
+        
+        // Function to calculate the ODE
+        function solveODE() {
+            const t0 = parseFloat(document.getElementById("t0").value);
+            const y0 = parseFloat(document.getElementById("y0").value);
+            const tEnd = parseFloat(document.getElementById("tEnd").value);
+            const h = parseFloat(document.getElementById("h").value);
+            const method = document.getElementById("method").value;
+            const equation = document.getElementById("equation").value;
+
+            const data = {
+                t0: t0,
+                y0: y0,
+                tEnd: tEnd,
+                h: h,
+                method: method,
+                equation: equation
+            };
+
+            fetch("http://localhost:8080/solve-ode", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                const output = result.result.map((value, index) => {
+                    const t = t0 + index * h;
+                    return `t = ${t.toFixed(4)}, y = ${value.toFixed(6)}`;
+                }).join("\n");
+
+                document.getElementById("result").textContent = output;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+   
+        // Show or hide the higher order derivative field based on user selection
+        document.getElementById('derivativeType').addEventListener('change', function() {
+            const higherOrderDiv = document.getElementById('higherOrderDiv');
+            if (this.value === 'higher') {
+                higherOrderDiv.style.display = 'block';
+            } else {
+                higherOrderDiv.style.display = 'none';
+            }
+        });
+
+        function learnMore() {
+            window.location.href = "#aboutme";
+        }
+    </script>
+</body>
+</html>
